@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <label>Enter DB Name</label>
+  <input type="text" id="dbName" />
+  <button type="button" onclick="onCheck()">Check</button>
+
+  <label id="lblResult"></label>
+</body>
+
+</html>
+
+<script>
+  function onCheck() {
+
+    var uri = 'http://localhost:3000/checkdb/';
+    uri += $('#dbName').val();
+
+    $.get(uri, function (res) {
+      
+      $('#lblResult').text(res.dbexists);
+
+    });
+
+  }
+</script>
